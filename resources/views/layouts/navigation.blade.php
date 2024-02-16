@@ -5,7 +5,7 @@
             <div class="flex">
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route(auth()->user()->role === 'admin' ? 'admin.dashboard' : (auth()->user()->role === 'formator' ? 'formateur.dashboard' : 'dashboard'))" :active="request()->routeIs('Dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('ACAN') }}
                     </x-nav-link>
                 </div>
             </div>

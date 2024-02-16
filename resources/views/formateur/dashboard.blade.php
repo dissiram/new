@@ -1,4 +1,4 @@
-@extends('formateur.formateurLayouts.navbar')
+@include('formateur.formateurLayouts.navbar')
 <x-app-layout>
 
 

@@ -1,4 +1,4 @@
-@extends('layouts.navbar')
+@include('layouts.navbar')
 <x-app-layout>
 
 
