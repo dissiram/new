@@ -33,5 +33,6 @@ class UserSeeder extends Seeder
                 'role' => 'customer'
             ]
         ]);
+        DB::commit();
     }
 }

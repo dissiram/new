@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function getCustomer()
     {
         $data = User::where('role', 'customer')->get();
-        $showForm = false; 
+        $showForm = false;
         return view('admin.customer.customer', compact('data', 'showForm'));
     }
 
@@ -34,9 +34,9 @@ class AdminController extends Controller
     public function deleteCustomer($id)
     {
      $data=user::find($id);
-     $data->delete();  
+     $data->delete();
      Alert::success('Success','Client supprimé avec succès !');
-     return redirect()->back(); 
+     return redirect()->back();
     }
 
 
@@ -55,7 +55,7 @@ class AdminController extends Controller
 
         Alert::success('Success','Client Modifier avec succès !');
 
-        return redirect()->route('admin.customer'); 
+        return redirect()->route('admin.customer');
     }
 
     //Admin formator function

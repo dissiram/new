@@ -17,12 +17,6 @@ use App\Http\Controllers\FormatorPanel\FormatorController;
 |
 */
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-
 Route::get('/', [HomeController::class, "index"]);
 
 Route::get('/dashboard', function () {
@@ -35,27 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require_once __DIR__.'/auth.php';
 
 
 
 Route::middleware(['auth','role:admin'])->group(function () {
-    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');  
-    
-    //customer route 
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');   
     Route::get('admin/customer', [AdminController::class, 'getCustomer'])->name('admin.customer'); 
     Route::get('admin/deleteCustomer/{id}', [AdminController::class, 'deleteCustomer'])->name('admin.deleteCustomer'); 
     Route::get('admin/customer/{id}', [AdminController::class, 'editCustomer'])->name('customer.edit'); 
     Route::post('admin/updateCustomer/{id}', [AdminController::class, 'updateCustomer'])->name('admin.updateCustomer'); 
-
-    //formator route
-    Route::get('admin/formator', [AdminController::class, 'getFormator'])->name('admin.formator');
-    Route::get('admin/formator/{id}', [AdminController::class, 'editFormator'])->name('formator.edit'); 
-    Route::get('admin/deleteFormator/{id}', [AdminController::class, 'deleteFormator'])->name('admin.deleteFormator');
-    Route::post('admin/updateFormator/{id}', [AdminController::class, 'updateFormator'])->name('admin.updateFormator');   
-
 });
 
 Route::middleware(['auth','role:formator'])->group(function () {
-    Route::get('formateur/dashboard', [FormatorController::class, 'index'])->name('formateur.dashboard');  
+    Route::get('formateur/dashboard', [FormatorController::class, 'index'])->name('formateur.dashboard');
 });
