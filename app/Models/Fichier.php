@@ -20,4 +20,18 @@ class Fichier extends Model
         return $this->belongsTo(Session::class);
     }
 
+    public function evenement() : BelongsTo
+    {
+        return $this->belongsTo(Evenement::class);
+    }
+
+    public function service() : BelongsTo
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function articles() : BelongsTo
+    {
+        return $this->belongsTo(Article::class);
+    }
 }
