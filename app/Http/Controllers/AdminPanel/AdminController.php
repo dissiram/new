@@ -13,6 +13,7 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
+    //Admin Customer function
 
     public function getCustomer()
     {
@@ -52,8 +53,52 @@ class AdminController extends Controller
 
         $showForm = false;
 
+        Alert::success('Success','Client Modifier avec succès !');
+
         return redirect()->route('admin.customer'); 
     }
 
+    //Admin formator function
+
+    public function getFormator()
+    {
+        $data = User::where('role', 'formator')->get();
+        $showForm = false; 
+        return view('admin.formator.formator', compact('data', 'showForm'));
+    }
+
+
+    public function editFormator($id)
+    {
+        $data= User::find($id);
+        $showForm = true;
+        return view("admin.formator.formator", compact('data','showForm'));
+    }
+
+    public function deleteFormator($id)
+    {
+     $data=user::find($id);
+     $data->delete();  
+     Alert::success('Success','Formateur supprimé avec succès !');
+     return redirect()->back(); 
+    }
+
+    public function updateFormator(Request $request, $id){
+        
+        $data=user::find($id);
+
+        $data->name=$request->input('nom');
+        $data->email=$request->input('email');
+        $data->status = $request->input('status');
+        $data->role=$request->input('role');
+
+        $data->save();
+
+        $showForm = false;
+
+        Alert::success('Success','Formateur Modifier avec succès !');
+
+        return redirect()->route('admin.formator'); 
+    }
 
 }

@@ -149,7 +149,7 @@
             </li>
             <!-- Cards -->
             <li class="menu-item">
-              <a href="cards-basic.html" class="menu-link">
+              <a href="{{url('admin/formator')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Basic">Formateurs</div>
               </a>
