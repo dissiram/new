@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Evenement extends Model
 {
@@ -14,13 +13,14 @@ class Evenement extends Model
     protected $fillable = [
         'libelle',
         'description',
-        'start_at'
+        'start_at',
+        'image',
+        'categorie_id'
     ];
 
-    public function images() : HasOne
-    {
-        return $this->hasOne(Fichier::class);
-    }
+    protected $casts = [
+        'image'  => 'array'
+    ];
 
     public function categorie() : BelongsTo
     {

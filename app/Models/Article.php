@@ -14,7 +14,10 @@ class Article extends Model
     protected $fillable = [
         'titre',
         'slug',
-        'contenu'
+        'contenu',
+        'image',
+        'user_id',
+        'categorie_id'
     ];
 
     public function categorie() : BelongsTo
@@ -25,5 +28,10 @@ class Article extends Model
     public function images() : HasMany
     {
         return $this->hasMany(Fichier::class);
+    }
+
+    public function auteur() : BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

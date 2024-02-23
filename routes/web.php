@@ -42,5 +42,5 @@ Route::middleware(['auth','role:admin'])->group(function () {
 });
 
 Route::middleware(['auth','role:formator'])->group(function () {
-    Route::get('formateur/dashboard', [FormatorController::class, 'index'])->name('formateur.dashboard');
+    Route::get('prof/dashboard', [FormatorController::class, 'index'])->name('formateur.dashboard');
 });

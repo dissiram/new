@@ -16,9 +16,14 @@ return new class extends Migration
             $table->string('titre')->unique()->nullable(false);
             $table->string('slug')->unique()->nullable(false);
             $table->text('contenu')->nullable(false);
+            $table->text('image')->nullable();
+            $table->boolean('published')->default(false);
             
-            $table->foreignId('categorie_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate()
+            $table->foreignId('user_id')->cascadeOnDelete();
+            
+            $table->foreignId('categorie_id')->cascadeOnDelete()
                 ->comment("La catégorie à laquelle l'article est associé");
+
             $table->timestamps();
         });
     }

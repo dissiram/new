@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string( 'description' );
             $table->dateTime('start_at');
             
+            $table->foreignId('categorie_id')->constrained()->cascadeOnDelete();
+            $table->json('image');
             $table->timestamps();
         });
     }

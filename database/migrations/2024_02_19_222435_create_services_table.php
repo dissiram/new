@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titre')->unique()->nullable();
             $table->string('description');
             $table->decimal('tarif', 10,2)->nullable(false);
+
             $table->timestamps();
         });
     }
