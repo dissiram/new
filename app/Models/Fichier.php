@@ -12,7 +12,8 @@ class Fichier extends Model
 
     protected $fillable  = [
         'url',
-        'description'
+        'description',
+        'session_id'
     ];
 
     public function session() : BelongsTo

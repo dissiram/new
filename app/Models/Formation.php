@@ -15,10 +15,11 @@ class Formation extends Model
     protected $fillable = [
         'titre',
         'description',
-        'tarif'
+        'tarif',
+        'user_id'
     ];
 
-    public function auteur() : BelongsTo
+    public function proprio() : BelongsTo
     {
         return $this->belongsTo(User::class);
     }
