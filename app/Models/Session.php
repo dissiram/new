@@ -14,7 +14,8 @@ class Session extends Model
     protected $fillable = [
         'titre',
         'sous-titre',
-        'contenu'
+        'contenu',
+        'formation_id'
     ];
 
     public function formation() : BelongsTo

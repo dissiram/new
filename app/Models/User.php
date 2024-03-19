@@ -18,7 +18,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
     use HasApiTokens, HasFactory, Notifiable;
 
 
-    public function canAccessPanel(Panel $panel) : bool
+    public function canAccessPanel(Panel $panel): bool
     {
         return $this->role == $panel->getId() && $this->status;
     }
@@ -58,7 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         'password' => 'hashed',
     ];
 
-    public function suivre() : BelongsToMany
+
+    // Relation du'un eleve qui suit des formation
+    public function suivre(): BelongsToMany
     {
         return $this->belongsToMany(Formation::class, 'formation_user')
             ->as('souscription')
@@ -66,13 +68,18 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
             ->withTimestamps();
     }
 
-   public function formations() : HasMany
-   {
-       return $this->hasMany(Formation::class);
-   }
-   
-   public function article() : HasMany
-   {
-    return $this->hasMany(Article::class);
-   }
+
+    // Relation d'un formateur et ses formations
+    public function formations(): HasMany
+    {
+        return $this->hasMany(Formation::class);
+    }
+
+
+    // Relation d'un redacteur et de ses articles
+
+    public function articles(): HasMany
+    {
+        return $this->hasMany(Article::class);
+    }
 }
