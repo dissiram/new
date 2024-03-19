@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #06BBCC;
+    --primary: #ff0000;
     --light: #F0FBFC;
     --dark: #181d38;
 }
@@ -39,7 +39,7 @@
 
 /*** Button ***/
 .btn {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins';
     font-weight: 600;
     transition: .5s;
 }
@@ -80,7 +80,7 @@
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Poppins";
     font-weight: 900;
     vertical-align: middle;
     margin-left: 8px;
@@ -89,7 +89,7 @@
 .navbar-light .navbar-nav .nav-link {
     margin-right: 30px;
     padding: 25px 0;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
     outline: none;
@@ -97,7 +97,7 @@
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: #a1a0a5;
 }
 
 @media (max-width: 991.98px) {
