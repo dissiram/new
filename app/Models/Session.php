@@ -15,7 +15,17 @@ class Session extends Model
         'titre',
         'sous-titre',
         'contenu',
-        'formation_id'
+        'ressources',
+        'formation_id',
+    ];
+
+     /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'ressources' => 'array',
     ];
 
     public function formation() : BelongsTo
@@ -23,8 +33,4 @@ class Session extends Model
         return $this->belongsTo(Formation::class);
     }
 
-    public function fichiers() : HasMany
-    {
-        return $this->hasMany(Fichier::class);
-    }
 }

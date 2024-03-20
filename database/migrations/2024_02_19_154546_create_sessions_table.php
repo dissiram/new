@@ -16,12 +16,13 @@ return new class extends Migration
             $table->string('titre')->unique()->nullable(false);
             $table->string('sous-titre')->unique()->nullable(false);
             $table->text( 'contenu' )->nullable();
+            $table->json('ressources');
 
             $table->foreignId('formation_id')
                 ->constrained()
                 ->onDelete('cascade')
                 ->onUpdate( 'cascade' );
-
+            
             $table->timestamps();
         });
     }

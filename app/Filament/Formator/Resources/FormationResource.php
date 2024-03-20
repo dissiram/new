@@ -2,22 +2,24 @@
 
 namespace App\Filament\Formator\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Formation;
+use Filament\Tables\Table;
+use Filament\Support\Markdown;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Forms\Components\MarkdownEditor;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Formator\Resources\FormationResource\Pages;
 use App\Filament\Formator\Resources\FormationResource\RelationManagers;
-use App\Filament\Formator\Resources\FormationResource\RelationManagers\SessionsRelationManager;
-use App\Models\Formation;
-use Filament\Forms;
-use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Support\Markdown;
-use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\FormationResource\RelationManagers\SessionsRelationManager;
+use App\Filament\Resources\FormationResource\RelationManagers\SouscritRelationManager;
+use Filament\Forms\Components\RichEditor;
 
 class FormationResource extends Resource
 {
@@ -26,6 +28,14 @@ class FormationResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     
     protected static ?string $navigationGroup = 'E-Learn';
+
+
+    public static function getEloquentQuery(): Builder
+    {
+        $user_id = auth()->user()['id'];
+        return parent::getEloquentQuery()->where('user_id', $user_id);
+    }
+
 
     public static function form(Form $form): Form
     {
@@ -39,20 +49,19 @@ class FormationResource extends Resource
 
                 TextInput::make('tarif')->numeric()
                     ->label('Tarif de la formation (0 si gratuit)')
-                    ->required(),
+                    ->required()
+                    ->suffix('F cfa'),
 
-                MarkdownEditor::make('description')
+                RichEditor::make('description')
                     ->label('Description courte')
-                    ->maxLength(250),
+                    ->columnSpanFull(),
 
                 Select::make('user_id')
                     ->label('Créée par')
                     ->relationship('proprio', 'name')
                     ->native(false)
                     ->searchable()
-                    ->required(),
-
-
+                    ->required()
             ]);
     }
 
@@ -101,7 +110,8 @@ class FormationResource extends Resource
     public static function getRelations(): array
     {
         return [
-            SessionsRelationManager::class
+            SessionsRelationManager::class,
+            SouscritRelationManager::class
         ];
     }
 

@@ -21,7 +21,7 @@ class Formation extends Model
 
     public function proprio() : BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function sessions() : HasMany
