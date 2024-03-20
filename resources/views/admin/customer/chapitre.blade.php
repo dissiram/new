@@ -74,9 +74,7 @@
                                         <div class="col-6 text-center  mb-5">
                                             <a href="{{ Storage::url($file) }}">
                                                 <div class="me-3 mb-1">
-                                                    {{-- <img src="{{ asset('assets/compiled/png/deo.png') }}"
-                                                        class="avatar avatar-sm" alt="Doc" /> --}}
-                                                        <i class="bi bi-download text-primary" style="font-size: 28px"></i>
+                                                    <i class="bi bi-download text-primary" style="font-size: 28px"></i>
                                                 </div>
                                                 <h>{{ Str::substr($file, 11)}}</h3>
                                             </a>
