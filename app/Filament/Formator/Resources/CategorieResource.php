@@ -1,23 +1,20 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Formator\Resources;
 
-use App\Filament\Formator\Resources\CategorieResource\RelationManagers\FormationsRelationManager;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use App\Models\Categorie;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms\Components\MarkdownEditor;
-use App\Filament\Resources\CategorieResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategorieResource\RelationManagers;
-use App\Filament\Resources\CategorieResource\RelationManagers\ArticlesRelationManager;
+use App\Filament\Formator\Resources\CategorieResource\Pages;
+use App\Filament\Formator\Resources\CategorieResource\RelationManagers;
+use App\Filament\Formator\Resources\CategorieResource\RelationManagers\FormationsRelationManager;
 
 class CategorieResource extends Resource
 {
@@ -27,7 +24,7 @@ class CategorieResource extends Resource
 
     protected static ?string $navigationLabel = 'Catégories';
 
-    protected static ?string $navigationGroup = 'Blog';
+    protected static ?string $navigationGroup = "E-Learn";
 
     public static function form(Form $form): Form
     {
@@ -69,7 +66,6 @@ class CategorieResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -81,7 +77,6 @@ class CategorieResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ArticlesRelationManager::class,
             FormationsRelationManager::class
         ];
     }

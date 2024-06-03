@@ -27,6 +27,8 @@ return new class extends Migration
             // Indicates if the user has completed the formation or not.
             $table->boolean('completed')->default(false);
 
+            $table->unique(['formation_id', 'user_id']);
+
             $table->timestamps();
         });
     }

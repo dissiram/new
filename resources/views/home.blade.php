@@ -44,22 +44,15 @@
     <!-- Spinner End -->
 
     <!-- Navbar Start -->
-<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
         <a href="{{ route('home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
             <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>ACAN Learn</h2>
-=======
-    <nav class="navbar navbar-expand-lg bg-light navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        <img class="img-fluid  w-100 h-100" src="acan_logo.png" alt="" style="object-fit: cover;">
->>>>>>> 141f051e6cabb125a92d4518dbcacb32a8f4bc07
         </a>
         <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-<<<<<<< HEAD
                 <a href="{{ route('home') }}" class="nav-item nav-link {{ Route::is('') ? 'active' : '' }} ">Accueil</a>
                 {{-- <a href="about.html" class="nav-item nav-link">About</a> --}}
                 <a href="{{ route('cours') }}"
@@ -69,7 +62,7 @@
             </div>
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Tableau de
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Tableau de
                         bord <i class="fa fa-arrow-right ms-3"></i></a>
                 @else
                     <a href="{{ route('login') }}" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Connexion <i
@@ -81,21 +74,6 @@
                     @endif
                 @endauth
             @endif
-=======
-                <a href="index.html" class="nav-item nav-link active">Accueil</a>
-                <a href="about.html" class="nav-item nav-link">A Propos</a>
-                <a href="courses.html" class="nav-item nav-link">Formations</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">ACAN</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Notre Equipe</a>
-                        <a href="testimonial.html" class="dropdown-item">Nos Evènements</a>
-                        
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contacts</a>
-            </div>
->>>>>>> 141f051e6cabb125a92d4518dbcacb32a8f4bc07
         </div>
     </nav>
     <!-- Navbar End -->

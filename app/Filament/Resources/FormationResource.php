@@ -28,6 +28,12 @@ class FormationResource extends Resource
 
     protected static ?string $navigationGroup = 'E-Learn';
 
+    public static function getEloquentQuery(): Builder
+    {
+        $user_id = auth()->user()['id'];
+        return parent::getEloquentQuery()->where('user_id', $user_id);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -53,6 +59,12 @@ class FormationResource extends Resource
                     ->searchable()
                     ->required(),
 
+                Select::make('categorie_id')
+                    ->label('catégorie')
+                    ->relationship('categorie', 'libelle')
+                    ->native(false)
+                    ->searchable()
+                    ->required(),
 
             ]);
     }
@@ -60,28 +72,50 @@ class FormationResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                TextColumn::make('id')
-                    ->label("ID")
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable()
-                    ->numeric()
-                    ->prefix("FORM-"),
+        ->columns([
+            TextColumn::make('id')
+                ->label("ID")
+                ->searchable()
+                ->sortable()
+                ->toggleable()
+                ->numeric()
+                ->prefix("FORM-"),
+            
+            TextColumn::make('categorie.libelle')
+                ->label('Categorie')
+                ->searchable()
+                ->sortable()
+                ->toggleable()
+                ->badge(),
 
-                TextColumn::make('titre')
-                    ->label('Titre')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(),
+            TextColumn::make('titre')
+                ->label('Titre')
+                ->searchable()
+                ->sortable()
+                ->toggleable(),
 
-                TextColumn::make('tarif')
-                    ->label('Tarif')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable()
-                    ->money('fcfa', 1),
-            ])
+            TextColumn::make('description')
+                ->label('Description')
+                ->markdown()
+                ->searchable()
+                ->sortable()
+                ->toggleable()
+                ->limit(40),
+
+            TextColumn::make('proprio.name')
+                ->label('Auteur')
+                ->searchable()
+                ->sortable()
+                ->toggleable()
+                ->badge(),
+            
+            TextColumn::make('tarif')
+                ->label('Tarif')
+                ->searchable()
+                ->sortable()
+                ->toggleable()
+                ->money('fcfa', 1),
+        ])
             ->filters([
                 //
             ])

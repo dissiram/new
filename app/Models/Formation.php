@@ -16,7 +16,8 @@ class Formation extends Model
         'titre',
         'description',
         'tarif',
-        'user_id'
+        'user_id',
+        'categorie_id'
     ];
 
     public function proprio() : BelongsTo
@@ -45,5 +46,10 @@ class Formation extends Model
             ->as('abonne')
             ->withPivot('completed')
             ->withTimestamps();
+    }
+
+    public function categorie() : BelongsTo
+    {
+        return $this->belongsTo(Categorie::class);
     }
 }

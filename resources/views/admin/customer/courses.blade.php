@@ -22,6 +22,9 @@
                 </nav>
             </div>
         </div>
+        @if (Session()->has('success'))
+            <p class="text-success text-center h2">{{Session()->get('success')}}</p>
+        @endif
     </div>
 @endsection
 

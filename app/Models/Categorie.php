@@ -24,4 +24,14 @@ class Categorie extends Model
     {
         return $this->hasMany(Evenement::class);
     }
+
+    public function formations() : HasMany
+    {
+        return $this->hasMany(Formation::class);
+    }
+
+    public function nbForm()
+    {
+        return $this->formations()->count();
+    }
 }

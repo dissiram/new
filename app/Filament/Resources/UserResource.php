@@ -47,7 +47,7 @@ class UserResource extends Resource
                     ])->searchable(),
 
                 Checkbox::make('status')
-                ->label('Statut'),
+                ->label('Actif'),
             ])->columns(1);
     }
 

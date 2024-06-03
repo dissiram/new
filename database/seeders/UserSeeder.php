@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'name' => 'Customer',
                 'email' => 'customer@gmail.com',
                 'password' => bcrypt('1234'),
-                'role' => 'customer'
+                'role' => 'eleve'
             ]
         ]);
         DB::commit();

@@ -11,7 +11,11 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        return view('admin.customer.index');
+        $formations = Formation::limit(6)->get();
+        
+        return view('admin.customer.index', [
+            'data' => $formations
+        ]);
     }
 
     public function cours()

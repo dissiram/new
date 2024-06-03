@@ -17,10 +17,9 @@ return new class extends Migration
             $table->longText( 'description')->nullable();
             $table->decimal('tarif', 10, 2)->nullable(false);
 
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->foreignId('categorie_id')->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

@@ -91,31 +91,14 @@
                             <div class="card-body">
                                 {{-- <div id="chart-profile-visit"></div> --}}
                                 <div class="row">
+                                    @foreach ($data as $cours)
                                     <div class="col-md-6 col-lg-4 col-sm-12">
                                         <p class="text-justify">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias repellendus deleniti minima? Culpa voluptate impedit, ullam aut vitae nam aliquam necessitatibus exercitationem molestias recusandae architecto laudantium beatae? Ipsam, assumenda labore.
+                                            {{ $cours['titre'] }}
                                         </p>
                                     </div>
-                                    <div class="col-md-6 col-lg-4 col-sm-12">
-                                        <p class="text-justify">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias repellendus deleniti minima? Culpa voluptate impedit, ullam aut vitae nam aliquam necessitatibus exercitationem molestias recusandae architecto laudantium beatae? Ipsam, assumenda labore.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 col-sm-12">
-                                        <p class="text-justify">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias repellendus deleniti minima? Culpa voluptate impedit, ullam aut vitae nam aliquam necessitatibus exercitationem molestias recusandae architecto laudantium beatae? Ipsam, assumenda labore.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 col-sm-12">
-                                        <p class="text-justify">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias repellendus deleniti minima? Culpa voluptate impedit, ullam aut vitae nam aliquam necessitatibus exercitationem molestias recusandae architecto laudantium beatae? Ipsam, assumenda labore.
-                                        </p>
-                                    </div>
-                                    <div class="col-md-6 col-lg-4 col-sm-12">
-                                        <p class="text-justify">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias repellendus deleniti minima? Culpa voluptate impedit, ullam aut vitae nam aliquam necessitatibus exercitationem molestias recusandae architecto laudantium beatae? Ipsam, assumenda labore.
-                                        </p>
-                                    </div>
+                                    @endforeach
+                                    
                                 </div>
                             </div>
                         </div>
